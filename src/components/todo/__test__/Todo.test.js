@@ -1,23 +1,28 @@
-import { screen, render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Todo from "../Todo";
 
-beforeEach(() => {
-  render(<Todo todo={"i am test 1"} />);
-});
+/**
+ * Unit Testing
+ * Test the each part of component
+ **/
 
 it("should display todo text", () => {
-  const listEl = screen.getByTestId("title");
+  const { getByRole } = render(<Todo todo={"i am test 1"} />);
+  const listEl = getByRole("listitem");
   expect(listEl.textContent).toBe("i am test 1");
 });
 
 it("should be visible to users ", () => {
-  const listEl = screen.getByRole("listitem");
+  const { getByRole } = render(<Todo todo={"i am test 1"} />);
+  const listEl = getByRole("listitem");
   expect(listEl.textContent).toBeVisible;
 });
 
 it("should display check icon on hover", () => {
-  const listEl = screen.getByRole("listitem");
-  const spanEl = screen.getByTestId("icon");
-  fireEvent.mouseOver(listEl);
-  expect(spanEl).toBeVisible;
+  const { getByRole, getByTestId } = render(<Todo todo={"i am test 1"} />);
+  const listEl = getByRole("listitem");
+  const btnEl = getByTestId("icon");
+  userEvent.hover(listEl);
+  expect(btnEl).toBeVisible;
 });
