@@ -51,9 +51,8 @@ const AddTodo = () => {
           placeholder="Add your new todo"
           onChange={handleChange}
           value={todo}
-          data-testid="input"
         />
-        <button onClick={handleClick} data-testid="btn">
+        <button onClick={handleClick} data-testid="add_btn">
           <i className="fas fa-plus"></i>
         </button>
       </div>

@@ -6,14 +6,14 @@ const Todo = (props) => {
     <>
       <li data-testid="title">
         {props.todo}
-        <span className={style.icon} data-testid="icon">
-          <i
-            className="fas fa-check"
-            data-testid="btn2"
-            onClick={() => {
-              props.onClick(props.id);
-            }}
-          ></i>
+        <span
+          className={style.icon}
+          data-testid="icon"
+          onClick={() => {
+            props.onClick(props.id);
+          }}
+        >
+          <i className="fas fa-check"></i>
         </span>
       </li>
     </>
